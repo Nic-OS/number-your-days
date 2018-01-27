@@ -86,7 +86,8 @@ displayOutput = () => {
 
     const daysLeft = Number((userLifeExpectancy - this.state.userAge).toFixed()) * 365;
 
-    Alert.alert("You have approximately " + daysLeft + " days left.")
+    Alert.alert("You have approximately " + daysLeft + " days left, or " +
+                (daysLeft/365) + " years.")
   }
 
 
