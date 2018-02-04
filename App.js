@@ -12,12 +12,9 @@ import DaysLeft from './AppComponents/DaysLeft/DaysLeft';
 import SubmitButton from './AppComponents/SubmitButton/SubmitButton';
 
 export default class App extends Component {
-constructor() {
-  super()
-
 //The state storing main app data: user's age, gender, country (by index #),
 //and life expectancy by gender and country.
-  this.state = {
+  state = {
     userAge: '',
     userGender: '',
     userCountry: '',
@@ -55,8 +52,8 @@ constructor() {
         59.0]
     ],
   };
-}
-
+//Function used to display the state attribute values to make sure they are
+//updating.
 displayOutput = () => {
   const output = "Your age is: " + this.state.userAge + "\n"
           + "Your gender is: " + this.state.userGender + "\n"
@@ -65,70 +62,132 @@ displayOutput = () => {
     return output;
 }
 
-//Updates the user's age
-  setUserAge = (text) => {
-    this.setState({userAge: text});
-  };
+//Updates the user's age. Passed as a prop to UserAge child component.
+setUserAge = (text) => {
+  this.setState({userAge: text});
+};
 
-//Updates the user's gender (represented by index in an array)
-  setUserGender = (value) => {
-    this.setState({userGender: value});
-  };
+//Updates the user's gender (represented by index in an array). Passed as a prop
+//to UserGender child component.
+setUserGender = (value) => {
+  this.setState({userGender: value});
+};
 
-//Updates the user's country (again represented by array index)
-  setUserCountry = (value) => {
-    this.setState({userCountry: value});
-  };
+//Updates the user's country (again represented by array index). Passed as prop
+//to the UserCountry child component.
+setUserCountry = (value) => {
+  this.setState({userCountry: value});
+};
 
-  calculateDaysLeft = () => {
-    const userLifeExpectancy = this.state.genderCountryLifeExpectancy[
-      this.state.userGender][this.state.userCountry];
+//Final calculation after user submits inputted data to display estimated days
+//left to live.
+calculateDaysLeft = () => {
+  const userLifeExpectancy = this.state.genderCountryLifeExpectancy[
+    this.state.userGender][this.state.userCountry];
 
-    const daysLeft = Number((userLifeExpectancy - this.state.userAge).toFixed()) * 365;
+  const daysLeft = Number((userLifeExpectancy - this.state.userAge).toFixed()) * 365;
 
-    Alert.alert("You have approximately " + daysLeft + " days left, or " +
-                (daysLeft/365) + " years.")
-  }
+  Alert.alert("You have approximately " + daysLeft + " days left, or " +
+              (daysLeft/365) + " years.")
+};
 
 
-  render() {
-    return (
-      <ScrollView style={styles.container}>
-        <Card title="Number Your Days" titleStyle={styles.titleStyle}>
-          <Card title="What is your age?">
-            <UserAge
-              placeholder={'Enter age:'}
-              keyboardType={'numeric'}
-              onSubmit={this.setUserAge}
-            />
-          </Card>
+/*Storing the child components in variables that will be used as the values for
+the Navigator screens. This allows me to configure the child components by
+passing data as props before using them in the Navigator.*/
+Age = () => (
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <UserAge
+      placeholder={'Enter age:'}
+      keyboardType={'numeric'}
+      onSubmit={this.setUserAge}
+    />
+  </View>
+);
 
-          <Card title="What is your gender?">
-            <UserGender
-              onValueChange={this.setUserGender}
-            />
-          </Card>
+Gender = () => (
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <UserGender onValueChange={this.setUserGender}/>
+  </View>
+);
 
-          <Card title="Where do you live?">
-            <UserCountry
-              onValueChange={this.setUserCountry}
-            />
-          </Card>
+Country = () => (
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <UserCountry onValueChange={this.setUserCountry}/>
+  </View>
+);
 
-          <Card title="Results">
-            <Text>Here are your results: </Text>
-            <Text>{this.displayOutput()}</Text>
-          </Card>
+Results = () => (
+  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <DaysLeft daysLeft={this.calculateDaysLeft}/>
+  </View>
+);
 
-            <SubmitButton
-              onPress={this.calculateDaysLeft}
-            />
+RootNavigator = StackNavigator({
+  Home: {
+    screen: Age,
+    navigationOptions: {
+      headerTitle: 'Number Your Days',
+    },
+  },
+  PickGender: {
+    screen: Gender,
+    navigationOptions: {
+      headerTitle: 'Number Your Days',
+    },
+  },
+  PickCountry: {
+    screen: Country,
+    navigationOptions: {
+      headerTitle: 'Number Your Days',
+    },
+  },
+  SeeResults: {
+    screen: Results,
+    navigationOptions: {
+      headerTitle: 'Number Your Days',
+    },
+  },
+});
 
+render() {
+  return(
+    <ScrollView style={styles.container}>
+      <Card title="Number Your Days" titleStyle={styles.titleStyle}>
+        <Card title="What is your age?">
+          <UserAge
+            placeholder={'Enter age:'}
+            keyboardType={'numeric'}
+            onSubmit={this.setUserAge}
+          />
         </Card>
-      </ScrollView>
+
+        <Card title="What is your gender?">
+          <UserGender
+            onValueChange={this.setUserGender}
+          />
+        </Card>
+
+        <Card title="Where do you live?">
+          <UserCountry
+            onValueChange={this.setUserCountry}
+          />
+        </Card>
+
+        <Card title="Results">
+          <Text>Here are your results: </Text>
+          <Text>{this.displayOutput()}</Text>
+        </Card>
+
+          <SubmitButton
+            onPress={this.calculateDaysLeft}
+          />
+
+      </Card>
+    </ScrollView>
     );
   }
-}
+};
 
 const styles = StyleSheet.create({
   titleStyle: {

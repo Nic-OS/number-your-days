@@ -16,7 +16,7 @@ onValueChange = (itemValue) => {
 
   render() {
     return (
-      <View>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Picker
           selectedValue={this.state.gender}
           onValueChange={this.onValueChange}

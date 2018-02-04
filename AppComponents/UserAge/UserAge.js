@@ -24,14 +24,16 @@ export default class UserAge extends Component {
     const {text} = this.state
 
     return (
-      <TextInput
-        style={styles.input}
-        value={text}
-        placeholder={placeholder}
-        keyboardType={keyboardType}
-        onChangeText={this.onChangeText}
-        onSubmitEditing={this.onSubmit}
-      />
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <TextInput
+          style={styles.input}
+          value={text}
+          placeholder={placeholder}
+          keyboardType={keyboardType}
+          onChangeText={this.onChangeText}
+          onSubmitEditing={this.onSubmit}
+        />
+      </View>
     )
   }
 }

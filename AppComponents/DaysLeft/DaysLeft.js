@@ -9,9 +9,7 @@ export default class DaysLeft extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.component5}>
-          This will display the remaining days.
-        </Text>
+        <Text>this.props.daysLeft</Text>
       </View>
     )
   }

@@ -16,7 +16,7 @@ export default class UserCountry extends Component {
 
   render() {
     return (
-      <View style={styles.country}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Picker
           selectedValue={this.state.country}
           onValueChange={this.onValueChange}
