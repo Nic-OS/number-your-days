@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {StyleSheet, TextInput} from 'react-native'
+import {StyleSheet, View, TextInput} from 'react-native'
 
 export default class UserAge extends Component {
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, Picker, Text} from 'react-native';
+import {Picker, Text} from 'react-native';
 
 export default class UserGender extends Component {
 
@@ -16,7 +16,6 @@ onValueChange = (itemValue) => {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Picker
           selectedValue={this.state.gender}
           onValueChange={this.onValueChange}
@@ -25,7 +24,6 @@ onValueChange = (itemValue) => {
           <Picker.Item label="Female" value={0} />
           <Picker.Item label="Male" value={1} />
         </Picker>
-      </View>
     )
   }
 }

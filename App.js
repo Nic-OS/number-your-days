@@ -95,55 +95,32 @@ calculateDaysLeft = () => {
 /*Storing the child components in variables that will be used as the values for
 the Navigator screens. This allows me to configure the child components by
 passing data as props before using them in the Navigator.*/
-Age = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <UserAge
-      placeholder={'Enter age:'}
-      keyboardType={'numeric'}
-      onSubmit={this.setUserAge}
-    />
-  </View>
-);
-
-Gender = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <UserGender onValueChange={this.setUserGender}/>
-  </View>
-);
-
-Country = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <UserCountry onValueChange={this.setUserCountry}/>
-  </View>
-);
-
-Results = () => (
-  <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-    <DaysLeft daysLeft={this.calculateDaysLeft}/>
-  </View>
-);
 
 RootNavigator = StackNavigator({
   Home: {
-    screen: Age,
+    screen: <UserAge
+      placeholder={'Enter age:'}
+      keyboardType={'numeric'}
+      onSubmit={this.setUserAge}
+    />,
     navigationOptions: {
       headerTitle: 'Number Your Days',
     },
   },
   PickGender: {
-    screen: Gender,
+    screen: <UserGender onValueChange={this.setUserGender}/>,
     navigationOptions: {
       headerTitle: 'Number Your Days',
     },
   },
   PickCountry: {
-    screen: Country,
+    screen: <UserCountry onValueChange={this.setUserCountry}/>,
     navigationOptions: {
       headerTitle: 'Number Your Days',
     },
   },
   SeeResults: {
-    screen: Results,
+    screen: <DaysLeft daysLeft={this.calculateDaysLeft}/>,
     navigationOptions: {
       headerTitle: 'Number Your Days',
     },
@@ -151,41 +128,7 @@ RootNavigator = StackNavigator({
 });
 
 render() {
-  return(
-    <ScrollView style={styles.container}>
-      <Card title="Number Your Days" titleStyle={styles.titleStyle}>
-        <Card title="What is your age?">
-          <UserAge
-            placeholder={'Enter age:'}
-            keyboardType={'numeric'}
-            onSubmit={this.setUserAge}
-          />
-        </Card>
-
-        <Card title="What is your gender?">
-          <UserGender
-            onValueChange={this.setUserGender}
-          />
-        </Card>
-
-        <Card title="Where do you live?">
-          <UserCountry
-            onValueChange={this.setUserCountry}
-          />
-        </Card>
-
-        <Card title="Results">
-          <Text>Here are your results: </Text>
-          <Text>{this.displayOutput()}</Text>
-        </Card>
-
-          <SubmitButton
-            onPress={this.calculateDaysLeft}
-          />
-
-      </Card>
-    </ScrollView>
-    );
+  return <RootNavigator />;
   }
 };
 

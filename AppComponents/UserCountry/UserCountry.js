@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, View, Picker} from 'react-native';
+import {StyleSheet, Text, Picker} from 'react-native';
 
 export default class UserCountry extends Component {
 
@@ -16,7 +16,6 @@ export default class UserCountry extends Component {
 
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Picker
           selectedValue={this.state.country}
           onValueChange={this.onValueChange}
@@ -206,7 +205,6 @@ export default class UserCountry extends Component {
           <Picker.Item label="Zambia" value={181} />
           <Picker.Item label="Zimbabwe" value={182} />
         </Picker>
-      </View>
     )
   }
 }
