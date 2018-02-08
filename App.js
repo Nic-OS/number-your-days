@@ -4,11 +4,11 @@ import {ScrollView, View, StyleSheet, Text, Alert} from 'react-native';
 import {Card} from 'react-native-elements';
 import {StackNavigator} from 'react-navigation';
 
+import Welcome from './AppComponents/Welcome/Welcome';
 import UserAge from './AppComponents/UserAge/UserAge';
 import UserGender from './AppComponents/UserGender/UserGender';
 import UserCountry from './AppComponents/UserCountry/UserCountry';
 import DaysLeft from './AppComponents/DaysLeft/DaysLeft';
-//import Title from './AppComponents/Title/Title';
 import SubmitButton from './AppComponents/SubmitButton/SubmitButton';
 
 export default class App extends Component {
@@ -91,46 +91,43 @@ calculateDaysLeft = () => {
               (daysLeft/365) + " years.")
 };
 
+const RootNavigator = StackNavigator({
+    WelcomeScreen: {
+      screen: mapNavigationStateParamsToProps(Welcome),
+      navigationOptions:
+    },
+    Age: {
+      screen: mapNavigationStateParamsToProps(UserAge),
+      navigationOptions:
+    },
+    Gender: {
+      screen: mapNavigationStateParamsToProps(UserGender),
+      navigationOptions:
+    },
+    Country: {
+      screen: mapNavigationStateParamsToProps(UserCountry),
+      navigationOptions:
+    },
+    Days: {
+      screen: mapNavigationStateParamsToProps(DaysLeft),
+      navigationOptions:
+    },
+})
 
-/*Storing the child components in variables that will be used as the values for
-the Navigator screens. This allows me to configure the child components by
-passing data as props before using them in the Navigator.*/
-
-RootNavigator = StackNavigator({
-  Home: {
-    screen: <UserAge
-      placeholder={'Enter age:'}
-      keyboardType={'numeric'}
-      onSubmit={this.setUserAge}
-    />,
-    navigationOptions: {
-      headerTitle: 'Number Your Days',
-    },
-  },
-  PickGender: {
-    screen: <UserGender onValueChange={this.setUserGender}/>,
-    navigationOptions: {
-      headerTitle: 'Number Your Days',
-    },
-  },
-  PickCountry: {
-    screen: <UserCountry onValueChange={this.setUserCountry}/>,
-    navigationOptions: {
-      headerTitle: 'Number Your Days',
-    },
-  },
-  SeeResults: {
-    screen: <DaysLeft daysLeft={this.calculateDaysLeft}/>,
-    navigationOptions: {
-      headerTitle: 'Number Your Days',
-    },
-  },
-});
+const mapNavigationStateParamsToProps = (SomeComponent) => {
+    return class extends Component {
+        static navigationOptions = SomeComponent.navigationOptions;
+        render() {
+            const {navigation: {state: {params}}} = this.props
+            return <SomeComponent {...params} {...this.props} />
+        }
+    }
+}
 
 render() {
   return <RootNavigator />;
   }
-};
+}
 
 const styles = StyleSheet.create({
   titleStyle: {

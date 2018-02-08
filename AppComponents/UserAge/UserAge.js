@@ -25,6 +25,7 @@ export default class UserAge extends Component {
 
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Welcome to Number Your Days. Please enter your age below.</Text>
         <TextInput
           style={styles.input}
           value={text}
