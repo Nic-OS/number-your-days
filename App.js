@@ -91,40 +91,48 @@ calculateDaysLeft = () => {
               (daysLeft/365) + " years.")
 };
 
-const RootNavigator = StackNavigator({
-    WelcomeScreen: {
-      screen: mapNavigationStateParamsToProps(Welcome),
-      navigationOptions:
-    },
-    Age: {
-      screen: mapNavigationStateParamsToProps(UserAge),
-      navigationOptions:
-    },
-    Gender: {
-      screen: mapNavigationStateParamsToProps(UserGender),
-      navigationOptions:
-    },
-    Country: {
-      screen: mapNavigationStateParamsToProps(UserCountry),
-      navigationOptions:
-    },
-    Days: {
-      screen: mapNavigationStateParamsToProps(DaysLeft),
-      navigationOptions:
-    },
-})
-
-const mapNavigationStateParamsToProps = (SomeComponent) => {
-    return class extends Component {
-        static navigationOptions = SomeComponent.navigationOptions;
-        render() {
-            const {navigation: {state: {params}}} = this.props
-            return <SomeComponent {...params} {...this.props} />
-        }
-    }
-}
-
 render() {
+
+  const mapNavigationStateParamsToProps = (SomeComponent) => {
+      return class extends Component {
+          static navigationOptions = SomeComponent.navigationOptions;
+          render() {
+              const {navigation: {state: {params}}} = this.props
+              return <SomeComponent {...params} {...this.props} />
+          }
+      }
+  }
+
+  const RootNavigator = StackNavigator({
+      WelcomeScreen: {
+        screen: mapNavigationStateParamsToProps(Welcome),
+      },
+      Age: {
+        screen: mapNavigationStateParamsToProps(UserAge),
+      },
+      Gender: {
+        screen: mapNavigationStateParamsToProps(UserGender),
+      },
+      Country: {
+        screen: mapNavigationStateParamsToProps(UserCountry),
+      },
+      Days: {
+        screen: mapNavigationStateParamsToProps(DaysLeft),
+      },
+  },
+{
+    initialRouteName:  'WelcomeScreen',
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: 'blue',
+      },
+      headerTintColor: '',
+      headerTitleStyle: {
+        fontWeight: 'bold'
+      }
+    }
+});
+
   return <RootNavigator />;
   }
 }

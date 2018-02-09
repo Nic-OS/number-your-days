@@ -6,6 +6,8 @@ import {
 } from 'react-native';
 
 export default class DaysLeft extends Component {
+  static navigationOptions: {title: 'Your Days Left'};
+  
   render() {
     return (
       <View style={styles.container}>

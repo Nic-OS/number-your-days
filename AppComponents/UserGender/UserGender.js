@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Picker, Text} from 'react-native';
 
 export default class UserGender extends Component {
+static navigationOptions: {title: 'Set your Gender'};
 
 state = {
   gender: '',

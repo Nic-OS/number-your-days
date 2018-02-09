@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {StyleSheet, View, TextInput} from 'react-native'
 
 export default class UserAge extends Component {
+  static navigationOptions: {title: 'Set your age'};
 
   state = {
     text: '',

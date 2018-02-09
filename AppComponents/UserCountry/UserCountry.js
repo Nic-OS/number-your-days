@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {StyleSheet, Text, Picker} from 'react-native';
 
 export default class UserCountry extends Component {
+static navigationOptions: {title: 'Set your Country'};
 
   state = {
     country: '',
