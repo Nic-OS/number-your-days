@@ -93,38 +93,29 @@ calculateDaysLeft = () => {
 
 render() {
 
-  const mapNavigationStateParamsToProps = (SomeComponent) => {
-      return class extends Component {
-          static navigationOptions = SomeComponent.navigationOptions;
-          render() {
-              const {navigation: {state: {params}}} = this.props
-              return <SomeComponent {...params} {...this.props} />
-          }
-      }
-  }
-
   const RootNavigator = StackNavigator({
       WelcomeScreen: {
-        screen: mapNavigationStateParamsToProps(Welcome),
+        screen: Welcome,
       },
       Age: {
-        screen: mapNavigationStateParamsToProps(UserAge),
+        screen: UserAge,
       },
       Gender: {
-        screen: mapNavigationStateParamsToProps(UserGender),
+        screen: UserGender,
       },
       Country: {
-        screen: mapNavigationStateParamsToProps(UserCountry),
+        screen: UserCountry,
       },
       Days: {
-        screen: mapNavigationStateParamsToProps(DaysLeft),
+        screen: DaysLeft,
       },
   },
 {
     initialRouteName:  'WelcomeScreen',
     navigationOptions: {
+      title: 'Number Your Days',
       headerStyle: {
-        backgroundColor: 'blue',
+        backgroundColor: 'skyblue',
       },
       headerTintColor: '',
       headerTitleStyle: {

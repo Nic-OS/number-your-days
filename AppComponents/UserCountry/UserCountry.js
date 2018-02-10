@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {StyleSheet, Text, Picker} from 'react-native';
+import {View, StyleSheet, Text, Picker, Button} from 'react-native';
 
 export default class UserCountry extends Component {
 static navigationOptions: {title: 'Set your Country'};
@@ -8,18 +8,20 @@ static navigationOptions: {title: 'Set your Country'};
     country: '',
   }
 
-  onValueChange = (itemValue) => {
+  /*onValueChange = (itemValue) => {
     const {onValueChange} = this.props
 
     onValueChange(itemValue)
     this.setState({country: itemValue})
-  }
+  }*/
 
   render() {
     return (
+      <View>
+        <Text>Now select your country</Text>
         <Picker
           selectedValue={this.state.country}
-          onValueChange={this.onValueChange}
+          onValueChange={(itemValue) => this.setState({country:itemValue})}
           mode="dropdown">
           <Picker.Item label="Please select country" value={''} />
           <Picker.Item label="Afghanistan" value={0} />
@@ -206,6 +208,11 @@ static navigationOptions: {title: 'Set your Country'};
           <Picker.Item label="Zambia" value={181} />
           <Picker.Item label="Zimbabwe" value={182} />
         </Picker>
+        <Button
+          title="Calculate my results"
+          onPress={() => this.props.navigation.navigate('Days')}
+        />
+      </View>
     )
   }
 }

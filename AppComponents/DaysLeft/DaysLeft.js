@@ -7,11 +7,11 @@ import {
 
 export default class DaysLeft extends Component {
   static navigationOptions: {title: 'Your Days Left'};
-  
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>this.props.daysLeft</Text>
+        <Text>TBD</Text>
       </View>
     )
   }
