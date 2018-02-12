@@ -6,12 +6,13 @@ import {
 } from 'react-native';
 
 export default class DaysLeft extends Component {
-  static navigationOptions: {title: 'Your Days Left'};
 
   render() {
     return (
-      <View style={styles.container}>
-        <Text>TBD</Text>
+      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+        <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+          TBD
+        </Text>
       </View>
     )
   }

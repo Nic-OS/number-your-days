@@ -2,23 +2,17 @@ import React, { Component } from 'react';
 import {View, StyleSheet, Text, Picker, Button} from 'react-native';
 
 export default class UserCountry extends Component {
-static navigationOptions: {title: 'Set your Country'};
 
   state = {
     country: '',
   }
 
-  /*onValueChange = (itemValue) => {
-    const {onValueChange} = this.props
-
-    onValueChange(itemValue)
-    this.setState({country: itemValue})
-  }*/
-
   render() {
     return (
-      <View>
-        <Text>Now select your country</Text>
+      <View style={{justifyContent: 'center'}}>
+        <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+          Now select your country
+        </Text>
         <Picker
           selectedValue={this.state.country}
           onValueChange={(itemValue) => this.setState({country:itemValue})}

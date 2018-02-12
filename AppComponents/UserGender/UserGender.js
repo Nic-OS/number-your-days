@@ -2,24 +2,20 @@ import React, { Component } from 'react';
 import {View, Picker, Text, Button} from 'react-native';
 
 export default class UserGender extends Component {
-static navigationOptions: {title: 'Set your Gender'};
 
 state = {
   gender: '',
 }
 
-/*onValueChange = (itemValue) => {
-  const {onValueChange} = this.props
-
-  onValueChange(itemValue)
-  this.setState({gender: itemValue});
-}*/
-
   render() {
     return (
       <View>
-        <Text>Now select your gender</Text>
+        <Text style={{alignItems: 'center', justifyContent: 'center',
+        fontSize: 20, fontWeight: 'bold'}}>
+          Now select your gender
+        </Text>
         <Picker
+          style={{alignItems: 'center', justifyContent: 'center'}}
           selectedValue={this.state.gender}
           onValueChange={(itemValue) => this.setState({gender: itemValue})}
           mode={'dropdown'}>

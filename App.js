@@ -63,8 +63,8 @@ displayOutput = () => {
 }
 
 //Updates the user's age. Passed as a prop to UserAge child component.
-setUserAge = (text) => {
-  this.setState({userAge: text});
+setUserAge = (value) => {
+  this.setState({userAge: value});
 };
 
 //Updates the user's gender (represented by index in an array). Passed as a prop
