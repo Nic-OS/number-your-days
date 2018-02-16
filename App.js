@@ -52,15 +52,7 @@ export default class App extends Component {
         59.0]
     ],
   };
-//Function used to display the state attribute values to make sure they are
-//updating.
-displayOutput = () => {
-  const output = "Your age is: " + this.state.userAge + "\n"
-          + "Your gender is: " + this.state.userGender + "\n"
-          + "Your country is: " + this.state.userCountry + "\n";
 
-    return output;
-}
 
 //Updates the user's age. Passed as a prop to UserAge child component.
 setUserAge = (value) => {
