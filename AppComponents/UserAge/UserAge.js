@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import {StyleSheet, View, TextInput, Text, Button} from 'react-native'
+import { connect } from 'react-redux';
+import { setUserAge } from '../actions/index';
+import { bindActionCreators } from 'redux';
 
-export default class UserAge extends Component {
+class UserAge extends Component {
 
   state = {
     age: '',
@@ -10,19 +13,16 @@ export default class UserAge extends Component {
   onChangeText = (age) => {this.setState({age})}
 
   onSubmit = () => {
-    //const {onSubmit} = this.props
+    const {onSubmit} = this.props
     const {age} = this.state
 
     if (!age) return // Don't submit if empty
 
-    //onSubmit(age)
+    onSubmit(age)
     this.setState({age})
   }
 
   render() {
-    const {params} = this.props.navigation.state;
-    const placeholder = params ? params.placeholder : null;
-    const keyboardType = params ? params.keyboardType : null;
 
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -32,8 +32,8 @@ export default class UserAge extends Component {
         <TextInput
           style={styles.input}
           value={this.state.age}
-          placeholder={placeholder}
-          keyboardType={keyboardType}
+          placeholder='Enter age here:'
+          keyboardType='numeric'
           onChangeText={this.onChangeText}
           onSubmitEditing={this.onSubmit}
         />
@@ -45,6 +45,18 @@ export default class UserAge extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    //this.props.age: state.age
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({onSubmit: setUserAge}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserAge);
 
 const styles = StyleSheet.create({
   container: {

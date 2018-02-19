@@ -11,10 +11,7 @@ render() {
       <Text style={{fontSize: 20, fontWeight: 'bold'}}>Welcome to the Number Your Days app.</Text>
       <Button
         title="Click here to begin"
-        onPress={() => this.props.navigation.navigate('Age', {
-          placeholder: 'Enter age here',
-          keyboardType: 'numeric',
-        })}
+        onPress={() => this.props.navigation.navigate('Age')}
       />
     </View>
   )
