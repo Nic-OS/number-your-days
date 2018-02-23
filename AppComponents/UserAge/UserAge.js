@@ -13,6 +13,8 @@ class UserAge extends Component {
   onChangeText = (age) => {this.setState({age})}
 
   onSubmit = () => {
+  //onSubmit prop passes in the ActionCreator setUserAge, which updates global
+  //state {age} by returning payload value equal to the value of the user input.
     const {onSubmit} = this.props
     const {age} = this.state
 
@@ -48,7 +50,7 @@ class UserAge extends Component {
 
 function mapStateToProps(state) {
   return {
-    //this.props.age: state.age
+    age: state.age
   };
 }
 

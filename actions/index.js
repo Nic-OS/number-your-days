@@ -3,6 +3,6 @@ export function setUserAge(value) {
   // with a type property.
   return {
     type: 'SET_AGE',
-    payload: value,
+    age: value,
   };
 }
