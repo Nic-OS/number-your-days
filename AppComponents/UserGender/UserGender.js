@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {View, Picker, Text, Button} from 'react-native';
+import { connect } from 'react-redux';
 
-export default class UserGender extends Component {
+class UserGender extends Component {
 
 state = {
   gender: '',
@@ -31,3 +32,11 @@ state = {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    gender: state.gender
+  };
+}
+
+export default connect(mapStateToProps)(UserGender);

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, Text, Picker, Button} from 'react-native';
+import { connect } from 'react-redux';
 
-export default class UserCountry extends Component {
+class UserCountry extends Component {
 
   state = {
     country: '',
@@ -211,16 +212,10 @@ export default class UserCountry extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-      padding: 1,
-      margin: 10,
-      width: 400,
-      height: 50,
-      backgroundColor: 'whitesmoke',
+function mapStateToProps(state) {
+  return {
+    country: state.country
+  };
+}
 
-  },
-  component4: {
-    fontSize: 20,
-  },
-})
+export default connect(mapStateToProps)(UserCountry);

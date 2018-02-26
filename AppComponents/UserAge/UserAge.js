@@ -6,22 +6,16 @@ import { bindActionCreators } from 'redux';
 
 class UserAge extends Component {
 
-  state = {
-    age: '',
-  }
-
-  onChangeText = (age) => {this.setState({age})}
+  onChangeText = (age) => this.props.setUserAge(age)
 
   onSubmit = () => {
-  //onSubmit prop passes in the ActionCreator setUserAge, which updates global
+  //setUserAge prop passes in the ActionCreator setUserAge, which updates global
   //state {age} by returning payload value equal to the value of the user input.
-    const {onSubmit} = this.props
-    const {age} = this.state
+    const {setUserAge} = this.props
 
-    if (!age) return // Don't submit if empty
+    if (!this.props.age) return // Don't submit if empty
 
-    onSubmit(age)
-    this.setState({age})
+    setUserAge(age)
   }
 
   render() {
@@ -33,7 +27,7 @@ class UserAge extends Component {
         </Text>
         <TextInput
           style={styles.input}
-          value={this.state.age}
+          value={this.props.age}
           placeholder='Enter age here:'
           keyboardType='numeric'
           onChangeText={this.onChangeText}
@@ -54,10 +48,14 @@ function mapStateToProps(state) {
   };
 }
 
+// Anything returned from this function will end up as props in the UserAge component.
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({onSubmit: setUserAge}, dispatch)
+  //Whenever setUserAge is called, the result should be passed to all reducers.
+  return bindActionCreators({setUserAge: setUserAge}, dispatch)
 }
 
+// Promote UserAge from 'dumb' component to 'smart' container - it needs to know
+// about the new dispatch method, setUserAge, and make it available as a prop.
 export default connect(mapStateToProps, mapDispatchToProps)(UserAge);
 
 const styles = StyleSheet.create({

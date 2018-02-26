@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import { connect } from 'react-redux';
 
-export default class DaysLeft extends Component {
-
+class DaysLeft extends Component {
 
   render() {
     return (
@@ -15,3 +14,11 @@ export default class DaysLeft extends Component {
     )
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    daysLeft: state.daysLeft
+  };
+}
+
+export default connect(mapStateToProps)(DaysLeft);
