@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   gender: GenderReducer,
   country: CountryReducer,
   daysLeft: DaysLeftReducer,
-  gendercountrylifeexpectancy: GenderCountryLifeExpectancyReducer
+  genderCountryLifeExpectancy: GenderCountryLifeExpectancyReducer
 });
 
 export default rootReducer;

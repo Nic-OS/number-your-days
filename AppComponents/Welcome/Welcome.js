@@ -14,7 +14,6 @@ render() {
         onPress={() => this.props.navigation.navigate('Age')}
       />
     </View>
-  )
-}
-
+    )
+  }
 }

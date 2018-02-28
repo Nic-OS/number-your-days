@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, Text, Picker, Button} from 'react-native';
 import { connect } from 'react-redux';
+import { setUserCountry } from '../actions/index';
+import { bindActionCreators } from 'redux';
 
 class UserCountry extends Component {
 
   state = {
     country: '',
+  }
+
+  onValueChange = (itemValue) => {
+    const {setUserCountry} = this.props
+
+    setUserCountry(itemValue)
+    this.setState({country: itemValue})
   }
 
   render() {
@@ -16,7 +25,7 @@ class UserCountry extends Component {
         </Text>
         <Picker
           selectedValue={this.state.country}
-          onValueChange={(itemValue) => this.setState({country:itemValue})}
+          onValueChange={this.onValueChange}
           mode="dropdown">
           <Picker.Item label="Please select country" value={''} />
           <Picker.Item label="Afghanistan" value={0} />
@@ -218,4 +227,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(UserCountry);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({setUserCountry: setUserCountry}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserCountry);

@@ -6,3 +6,24 @@ export function setUserAge(value) {
     payload: value,
   };
 }
+
+export function setUserGender(value) {
+  return {
+    type: 'SET_GENDER',
+    payload: value,
+  };
+}
+
+export function setUserCountry(value) {
+  return {
+    type: 'SET_COUNTRY',
+    payload: value,
+  };
+}
+
+export function calculateDaysLeft(value) {
+  return {
+    type: 'CALCULATE_DAYSLEFT',
+    payload: value,
+  };
+}
