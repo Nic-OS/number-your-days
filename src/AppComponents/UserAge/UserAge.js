@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { View, TextInput, Text, Button} from 'react-native'
 import { connect } from 'react-redux';
-import { setUserAge } from '../actions/index';
+import {setUserAge} from '.../Redux/actions';
 import { bindActionCreators } from 'redux';
 
 class UserAge extends Component {
-  state: {age: ''}
+
+  state = {age: ''}
 
   onChangeText = (age) => this.setState({age})
 
@@ -14,7 +15,7 @@ class UserAge extends Component {
   //state {age} by returning payload value equal to the value of the user input.
     const {setUserAge} = this.props
     const {age} = this.state
-    
+
     if (!age) return
 
     setUserAge(age)

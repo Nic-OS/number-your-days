@@ -3,11 +3,11 @@ import React, { Component } from 'react';
 import {Card} from 'react-native-elements';
 import {StackNavigator} from 'react-navigation';
 
-import Welcome from './AppComponents/Welcome/Welcome';
-import UserAge from './AppComponents/UserAge/UserAge';
-import UserGender from './AppComponents/UserGender/UserGender';
-import UserCountry from './AppComponents/UserCountry/UserCountry';
-import DaysLeft from './AppComponents/DaysLeft/DaysLeft';
+import Welcome from './src/AppComponents/Welcome/Welcome';
+import UserAge from './src/AppComponents/UserAge/UserAge';
+import UserGender from './src/AppComponents/UserGender/UserGender';
+import UserCountry from './src/AppComponents/UserCountry/UserCountry';
+import DaysLeft from './src/AppComponents/DaysLeft/DaysLeft';
 
 export default class App extends Component {
 
