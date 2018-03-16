@@ -9,50 +9,30 @@ const initialState = {
     daysLeft: '',
 }
 
-// Reducers. State argument is not application state, but only the piece of state
-// the reducer is responsible for.
+// The app's main reducer that will receive the actions dispatched to it and update the state object based on
+// the action type. Each action's payload will become the new value for that piece of state.
 
-AgeReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action) => {
   switch(action.type) {
-  case 'SET_AGE':
-    return action.payload;
-  default:
-    return state
-  }
-}
-
-GenderReducer = (state = initialState, action) => {
-  switch(action.type) {
+    case 'SET_AGE':
+      return Object.assign({}, state, {
+        age: action.payload
+      })
     case 'SET_GENDER':
-      return action.payload;
-    default:
-      return state
-  }
-}
-
-CountryReducer = (state = initialState, action) => {
-  switch(action.type) {
-  case 'SET_COUNTRY':
-    return action.payload;
-  default:
-    return state
-  }
-}
-
-DaysLeftReducer = (state = initialState, action) => {
-  switch(action.type) {
+      return Object.assign({}, state, {
+        gender: action.payload
+      })
+    case 'SET_COUNTRY':
+      return Object.assign({}, state, {
+        country: action.payload
+      })
     case 'CALCULATE_DAYSLEFT':
-      return action.payload;
+      return Object.assign({}, state, {
+        daysLeft: action.payload
+      })
     default:
       return state
   }
 }
 
-// The combined rootReducer that will be passed as an argument to the Redux store
-
-export default const rootReducer = combineReducers({
-  age: AgeReducer,
-  gender: GenderReducer,
-  country: CountryReducer,
-  daysLeft: DaysLeftReducer,
-});
+export default rootReducer;
