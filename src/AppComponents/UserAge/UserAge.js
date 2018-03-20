@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { View, TextInput, Text, Button} from 'react-native'
+import React, { Component } from 'react';
+import { View, TextInput, Text, Button} from 'react-native';
 import { connect } from 'react-redux';
-import {setUserAge} from '.../Redux/actions';
+import { setUserAge } from '../../Redux/actions';
 import { bindActionCreators } from 'redux';
 
 class UserAge extends Component {

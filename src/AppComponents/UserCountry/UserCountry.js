@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {View, StyleSheet, Text, Picker, Button} from 'react-native';
 import { connect } from 'react-redux';
-import { setUserCountry } from '.../Redux/actions';
+import { setUserCountry } from '../../Redux/actions';
 import { bindActionCreators } from 'redux';
 
 class UserCountry extends Component {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {View, Picker, Text, Button} from 'react-native';
 import { connect } from 'react-redux';
-import {setUserGender} from '.../Redux/actions';
+import {setUserGender} from '../../Redux/actions';
 import {bindActionCreators} from 'redux';
 
 class UserGender extends Component {

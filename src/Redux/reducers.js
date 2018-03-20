@@ -1,5 +1,3 @@
-import {combineReducers} from 'redux';
-
 // Specify initial state since Redux will call the reducers with an undefined state for the first time.
 
 const initialState = {
