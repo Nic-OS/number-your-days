@@ -41,9 +41,9 @@ onValueChange = (itemValue) => {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(store) {
   return {
-    gender: state.gender
+    gender: store.gender
   };
 }
 

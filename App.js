@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import {Card} from 'react-native-elements';
 import {StackNavigator} from 'react-navigation';
 
 import Welcome from './src/AppComponents/Welcome/Welcome';

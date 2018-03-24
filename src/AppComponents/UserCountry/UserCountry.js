@@ -221,9 +221,9 @@ class UserCountry extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(store) {
   return {
-    country: state.country
+    country: store.country
   };
 }
 

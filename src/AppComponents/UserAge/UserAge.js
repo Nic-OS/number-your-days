@@ -45,9 +45,9 @@ class UserAge extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(store) {
   return {
-    age: state.age
+    age: store.age
   };
 }
 

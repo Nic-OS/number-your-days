@@ -62,13 +62,12 @@ class DaysLeft extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(store) {
   return {
-    age: state.age,
-    gender: state.gender,
-    country: state.country,
-    genderCountryLifeExpectancy: state.genderCountryLifeExpectancy,
-    daysLeft: state.daysLeft,
+    age: store.age,
+    gender: store.gender,
+    country: store.country,
+    daysLeft: store.daysLeft,
   };
 }
 
