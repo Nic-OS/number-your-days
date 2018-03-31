@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {View, Picker, Text, Button} from 'react-native';
 import { connect } from 'react-redux';
 import {setUserGender} from '../../Redux/actions';
-import {bindActionCreators} from 'redux';
 
 class UserGender extends Component {
 
@@ -41,15 +40,13 @@ onValueChange = (itemValue) => {
   }
 }
 
-function mapStateToProps(store) {
-  return {
-    gender: store.gender
-  };
-}
+const mapStateToProps = state => ({
+  gender: state.gender
+})
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => ({
   //Whenever setUserAge is called, the result should be passed to all reducers.
-  return bindActionCreators({setUserGender: setUserGender}, dispatch)
-}
+  setUserGender: value => dispatch(setUserGender(value))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserGender);

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Text, View} from 'react-native';
 import { connect } from 'react-redux';
 import { calculateDaysLeft } from '../../Redux/actions';
-import { bindActionCreators } from 'redux';
 
 class DaysLeft extends Component {
 
@@ -46,33 +45,34 @@ class DaysLeft extends Component {
     const userLifeExpectancy = genderCountryLifeExpectancy[
       this.props.gender][this.props.country];
 
-    const daysLeft = Number((userLifeExpectancy - this.props.age).toFixed()) * 365;
+    const days = Number((userLifeExpectancy - this.props.age).toFixed()) * 365;
 
-    calculateDaysLeft(daysLeft)
+    calculateDaysLeft(days)
+
+    return this.props.daysLeft
   }
 
   render() {
+
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Text style={{fontSize: 20, fontWeight: 'bold'}}>
-          You have approximately {this.props.daysLeft} days left.
+          You have approximately {this.calculateDaysLeft()} days left.
         </Text>
       </View>
     )
   }
 }
 
-function mapStateToProps(store) {
-  return {
-    age: store.age,
-    gender: store.gender,
-    country: store.country,
-    daysLeft: store.daysLeft,
-  };
-}
+const mapStateToProps = state => ({
+  age: state.age,
+  gender: state.gender,
+  country: state.country,
+  daysLeft: state.daysLeft
+})
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({calculateDaysLeft: calculateDaysLeft}, dispatch)
-}
+const mapDispatchToProps = dispatch => ({
+  calculateDaysLeft: value => dispatch(calculateDaysLeft(value))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(DaysLeft);

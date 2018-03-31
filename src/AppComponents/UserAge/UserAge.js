@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, TextInput, Text, Button} from 'react-native';
 import { connect } from 'react-redux';
 import { setUserAge } from '../../Redux/actions';
-import { bindActionCreators } from 'redux';
 
 class UserAge extends Component {
 
@@ -45,17 +44,17 @@ class UserAge extends Component {
   }
 }
 
-function mapStateToProps(store) {
+const mapStateToProps = state => {
   return {
-    age: store.age
+    age: state.age
   };
 }
 
 // Anything returned from this function will end up as props in the UserAge component.
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => ({
   //Whenever setUserAge is called, the result should be passed to all reducers.
-  return bindActionCreators({setUserAge: setUserAge}, dispatch)
-}
+  setUserAge: value => dispatch(setUserAge(value))
+})
 
 // Promote UserAge from 'dumb' component to 'smart' container - it needs to know
 // about the new dispatch method, setUserAge, and make it available as a prop.

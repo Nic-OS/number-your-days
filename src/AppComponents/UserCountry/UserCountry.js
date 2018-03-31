@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {View, StyleSheet, Text, Picker, Button} from 'react-native';
 import { connect } from 'react-redux';
 import { setUserCountry } from '../../Redux/actions';
-import { bindActionCreators } from 'redux';
 
 class UserCountry extends Component {
 
@@ -221,14 +220,12 @@ class UserCountry extends Component {
   }
 }
 
-function mapStateToProps(store) {
-  return {
-    country: store.country
-  };
-}
+const mapStateToProps = state => ({
+  country: state.country
+})
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({setUserCountry: setUserCountry}, dispatch)
-}
+const mapDispatchToProps = dispatch => ({
+  setUserCountry: value => dispatch(setUserCountry(value))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserCountry);
