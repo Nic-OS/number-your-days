@@ -20,7 +20,7 @@ onValueChange = (itemValue) => {
     return (
       <View>
         <Text style={{alignItems: 'center', justifyContent: 'center',
-        fontSize: 20, fontWeight: 'bold'}}>
+        fontSize: 20, fontWeight: 'bold', backgroundColor: 'white'}}>
           Now select your gender
         </Text>
         <Picker

@@ -24,7 +24,7 @@ class UserAge extends Component {
   render() {
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white' }}>
         <Text style={{fontSize: 20, fontWeight: 'bold'}}>
           Please enter your age below.
         </Text>

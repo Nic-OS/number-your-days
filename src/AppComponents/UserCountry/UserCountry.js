@@ -18,7 +18,7 @@ class UserCountry extends Component {
 
   render() {
     return (
-      <View style={{justifyContent: 'center'}}>
+      <View style={{justifyContent: 'center', backgroundColor: 'white'}}>
         <Text style={{fontSize: 20, fontWeight: 'bold'}}>
           Now select your country
         </Text>
