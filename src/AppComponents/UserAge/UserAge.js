@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
-import { View, TextInput, Text, TouchableOpacity } from 'react-native';
+
+import { 
+  View, 
+  TextInput, 
+  Text, 
+  TouchableOpacity, 
+  KeyboardAvoidingView, 
+  StyleSheet, 
+  Keyboard,
+  TouchableWithoutFeedback
+} from 'react-native';
+
 import { connect } from 'react-redux';
+
 import { setUserAge } from '../../Redux/actions';
 
 class UserAge extends Component {
@@ -24,36 +36,75 @@ class UserAge extends Component {
   render() {
 
     return (
-      <View style={{ flex: 1, justifyContent: 'flex-start', backgroundColor: 'white', alignItems: 'center' }}>
-        <View style={{ width: 400, height: 200, justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{fontSize: 45, fontWeight: 'bold', color: 'black'}}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding">
+        <View style={styles.mainTextView}>
+          <Text style={styles.mainText}>
             What's your age?
           </Text>
         </View>
-        <View style={{height: 200, width: 200, marginTop: 20, justifyContent: 'center' }}>
-          <TextInput
-            value={this.state.age}
-            placeholder='Enter age here:'
-            keyboardType='numeric'
-            enablesReturnKeyAutomatically={true} //iOS only
-            onChangeText={this.onChangeText}
-            onSubmitEditing={this.onSubmit}
-          />
+        <View style={styles.inputView}>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+            <TextInput
+              value={this.state.age}
+              placeholder='Enter age here:'
+              keyboardType='numeric'
+              enablesReturnKeyAutomatically={true} //iOS only
+              onChangeText={this.onChangeText}
+              onSubmitEditing={this.onSubmit}
+            />
+          </TouchableWithoutFeedback>
         </View>
         <View style={{ marginTop: 20 }}>
           <TouchableOpacity
-            style={{padding: 20, marginLeft: 75, marginRight: 75, backgroundColor: 'skyblue', alignItems: 'center'}}
+            style={styles.button}
             onPress={() => this.props.navigation.navigate('Gender')}>
-            <Text style={{fontWeight: 'bold', fontSize: 20}}>
+            <Text style={styles.buttonText}>
               Next
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+    backgroundColor: 'white',
+    alignItems: 'center'
+  },
+  mainTextView: {
+    width: 400,
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  mainText: {
+    fontSize: 45, 
+    fontWeight: 'bold',
+    color: 'black'
+  },
+  inputView: {
+    height: 200,
+    width: 200,
+    marginTop: 20,
+    justifyContent: 'center'
+  },
+  button: {
+    padding: 20, 
+    marginLeft: 75, 
+    marginRight: 75, 
+    backgroundColor: 'skyblue', 
+    alignItems: 'center'
+  },
+  buttonText: {
+    fontWeight: 'bold', 
+    fontSize: 20,
+    color: 'white'
+  }
+})
 
 /*
 React-Redux stuff. The following three functions "connect" the child component to Redux by creating a wrapper 
