@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
-import {View, Picker, Text, Button} from 'react-native';
+
+import {
+  View, 
+  Picker, 
+  Text, 
+  Button, 
+  StyleSheet,
+  KeyboardAvoidingView,
+  Keyboard,
+  TouchableWithoutFeedback
+} from 'react-native';
+
 import { connect } from 'react-redux';
+
 import {setUserGender} from '../../Redux/actions';
 
 class UserGender extends Component {
@@ -19,8 +31,7 @@ onValueChange = (itemValue) => {
   render() {
     return (
       <View>
-        <Text style={{alignItems: 'center', justifyContent: 'center',
-        fontSize: 20, fontWeight: 'bold', backgroundColor: 'white'}}>
+        <Text style={styles.mainText}>
           Now select your gender
         </Text>
         <Picker
@@ -39,6 +50,14 @@ onValueChange = (itemValue) => {
     )
   }
 }
+
+const styles = StyleSheet.create({
+  mainText: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+
+})
 
 const mapStateToProps = state => ({
   gender: state.gender

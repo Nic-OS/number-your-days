@@ -36,25 +36,20 @@ class UserAge extends Component {
   render() {
 
     return (
-      <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.mainTextView}>
           <Text style={styles.mainText}>
             What's your age?
           </Text>
-        </View>
-        <View style={styles.inputView}>
-          <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-            <TextInput
-              value={this.state.age}
-              placeholder='Enter age here:'
-              keyboardType='numeric'
-              enablesReturnKeyAutomatically={true} //iOS only
-              onChangeText={this.onChangeText}
-              onSubmitEditing={this.onSubmit}
-            />
-          </TouchableWithoutFeedback>
-        </View>
-        <View style={{ marginTop: 20 }}>
+          <TextInput
+            style={{margin: 25}}
+            value={this.state.age}
+            placeholder='Enter age here:'
+            keyboardType='numeric'
+            enablesReturnKeyAutomatically={true} //iOS only
+            onChangeText={this.onChangeText}
+            onSubmitEditing={this.onSubmit}
+          />
           <TouchableOpacity
             style={styles.button}
             onPress={() => this.props.navigation.navigate('Gender')}>
@@ -63,7 +58,7 @@ class UserAge extends Component {
             </Text>
           </TouchableOpacity>
         </View>
-      </KeyboardAvoidingView>
+      </TouchableWithoutFeedback>
     )
   }
 }
@@ -71,9 +66,9 @@ class UserAge extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'white',
-    alignItems: 'center'
   },
   mainTextView: {
     width: 400,
