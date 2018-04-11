@@ -4,7 +4,8 @@ import {
   View, 
   Picker, 
   Text, 
-  Button, 
+  Button,
+  TouchableOpacity, 
   StyleSheet,
   KeyboardAvoidingView,
   Keyboard,
@@ -30,33 +31,59 @@ onValueChange = (itemValue) => {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text style={styles.mainText}>
-          Now select your gender
+          What's your gender?
         </Text>
         <Picker
-          style={{alignItems: 'center', justifyContent: 'center'}}
+          style={styles.dropdownMenu}
           selectedValue={this.state.gender}
           onValueChange={this.onValueChange}>
           <Picker.Item label="Please select gender" value={''} />
           <Picker.Item label="Female" value={0} />
           <Picker.Item label="Male" value={1} />
         </Picker>
-        <Button
-          title="Next"
-          onPress={() => this.props.navigation.navigate('Country')}
-        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => this.props.navigation.navigate('Country')}>
+          <Text style={styles.buttonText}>
+            Next
+          </Text>
+        </TouchableOpacity>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  mainText: {
-    fontSize: 20,
-    fontWeight: 'bold'
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
-
+  mainText: {
+    fontSize: 35,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  dropdownMenu: {
+    height: 75,
+    width: 200,
+    margin: 25
+  },
+  button: {
+    padding: 20, 
+    marginLeft: 75, 
+    marginRight: 75, 
+    backgroundColor: 'skyblue', 
+    alignItems: 'center'
+  },
+  buttonText: {
+    fontWeight: 'bold', 
+    fontSize: 20,
+    color: 'white'
+  }
 })
 
 const mapStateToProps = state => ({

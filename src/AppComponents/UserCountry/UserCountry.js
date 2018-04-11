@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {View, StyleSheet, Text, Picker, Button} from 'react-native';
+import {View, StyleSheet, Text, Picker, Button, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux';
 import { setUserCountry } from '../../Redux/actions';
 
@@ -18,11 +18,12 @@ class UserCountry extends Component {
 
   render() {
     return (
-      <View style={{justifyContent: 'center', backgroundColor: 'white'}}>
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+      <View style={styles.container}>
+        <Text style={styles.mainText}>
           Now select your country
         </Text>
         <Picker
+          style={styles.dropdownMenu}
           selectedValue={this.state.country}
           onValueChange={this.onValueChange}
           mode="dropdown">
@@ -211,14 +212,48 @@ class UserCountry extends Component {
           <Picker.Item label="Zambia" value={181} />
           <Picker.Item label="Zimbabwe" value={182} />
         </Picker>
-        <Button
-          title="Calculate my results"
-          onPress={() => this.props.navigation.navigate('Days')}
-        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => this.props.navigation.navigate('Days')}>
+          <Text style={styles.buttonText}>
+            Next
+          </Text>
+        </TouchableOpacity>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
+  },
+  mainText: {
+    fontSize: 35,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  dropdownMenu: {
+    height: 75,
+    width: 300,
+    margin: 25
+  },
+  button: {
+    padding: 20, 
+    marginLeft: 75, 
+    marginRight: 75, 
+    backgroundColor: 'skyblue', 
+    alignItems: 'center'
+  },
+  buttonText: {
+    fontWeight: 'bold', 
+    fontSize: 20,
+    color: 'white'
+  }
+})
 
 const mapStateToProps = state => ({
   country: state.country

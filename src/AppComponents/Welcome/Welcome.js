@@ -1,27 +1,52 @@
 import React, {Component} from 'react'
-import {View, Text, Button, TouchableOpacity } from 'react-native'
+import {View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native'
 
 export default class Welcome extends Component {
 
 render() {
 
   return(
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white'}}>
-      <View style={{height: 200, width: 400, justifyContent: 'center'}}>
-        <Text style={{color: 'black', fontSize: 35, fontWeight: 'bold', textAlign: 'center'}}>
+    <View style={styles.container}>
+        <Text style={styles.mainText}>
           Welcome to the Number Your Days app.
         </Text>
-      </View>
-      <View style={{height: 200, width: 400, justifyContent: 'center'}}>
         <TouchableOpacity
-          style={{padding: 20, marginLeft: 75, marginRight: 75, backgroundColor: 'skyblue', alignItems: 'center'}}
+          style={styles.button}
           onPress={() => this.props.navigation.navigate('Age')}>
-          <Text style={{fontWeight: 'bold', color: 'black', fontSize: 20}}>
+          <Text style={styles.buttonText}>
             Let's begin
           </Text>
         </TouchableOpacity>
-      </View>
     </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    backgroundColor: 'white'
+  },
+  mainText: {
+    color: 'black', 
+    fontSize: 40, 
+    fontWeight: 'bold', 
+    textAlign: 'center',
+    paddingBottom: 20
+  },
+  button: {
+    padding: 20, 
+    marginLeft: 75, 
+    marginRight: 75,
+    marginTop: 35,
+    backgroundColor: 'skyblue', 
+    alignItems: 'center'
+  },
+  buttonText: {
+    fontWeight: 'bold', 
+    color: 'white', 
+    fontSize: 20
+  }
+})

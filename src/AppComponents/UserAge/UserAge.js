@@ -37,12 +37,12 @@ class UserAge extends Component {
 
     return (
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.mainTextView}>
+        <View style={styles.container}>
           <Text style={styles.mainText}>
             What's your age?
           </Text>
           <TextInput
-            style={{margin: 25}}
+            style={styles.input}
             value={this.state.age}
             placeholder='Enter age here:'
             keyboardType='numeric'
@@ -70,22 +70,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  mainTextView: {
-    width: 400,
-    height: 200,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
   mainText: {
-    fontSize: 45, 
+    fontSize: 35, 
     fontWeight: 'bold',
     color: 'black'
   },
-  inputView: {
-    height: 200,
-    width: 200,
-    marginTop: 20,
-    justifyContent: 'center'
+  input: {
+    margin: 25, 
+    width: 150, 
+    height: 75,
+    fontSize: 20,
+    textAlign: 'center'
   },
   button: {
     padding: 20, 
