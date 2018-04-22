@@ -28,6 +28,13 @@ const rootReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         daysLeft: action.payload
       })
+    case 'START_OVER':
+      return Object.assign({}, state, {
+        age: '',
+        gender: '',
+        country: '',
+        daysLeft: ''
+      })
     default:
       return state
   }

@@ -32,16 +32,6 @@ render() {
 {
     initialRouteName:  'WelcomeScreen',
     headerMode: 'screen',
-    navigationOptions: {
-      title: 'Number Your Days',
-      headerStyle: {
-        backgroundColor: 'skyblue',
-      },
-      headerTintColor: 'white',
-      headerTitleStyle: {
-        fontWeight: 'bold'
-      }
-    }
 });
 
   return <RootNavigator />;

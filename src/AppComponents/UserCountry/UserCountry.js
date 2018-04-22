@@ -4,6 +4,16 @@ import { connect } from 'react-redux';
 import { setUserCountry } from '../../Redux/actions';
 
 class UserCountry extends Component {
+  static navigationOptions = {
+    title: 'Number Your Days',
+    headerStyle: {
+      backgroundColor: '#42c2f4',
+    },
+    headerTintColor: 'white',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
+  }
 
   state = {
     country: '',
@@ -20,7 +30,7 @@ class UserCountry extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.mainText}>
-          Now select your country
+          Where do you live?
         </Text>
         <Picker
           style={styles.dropdownMenu}
@@ -245,7 +255,7 @@ const styles = StyleSheet.create({
     padding: 20, 
     marginLeft: 75, 
     marginRight: 75, 
-    backgroundColor: 'skyblue', 
+    backgroundColor: '#42c2f4', 
     alignItems: 'center'
   },
   buttonText: {

@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
-import { Text, View} from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { calculateDaysLeft } from '../../Redux/actions';
+import { calculateDaysLeft, startOver } from '../../Redux/actions';
 
 class DaysLeft extends Component {
+  static navigationOptions = {
+    title: 'Number Your Days',
+    headerStyle: {
+      backgroundColor: '#42c2f4',
+    },
+    headerTintColor: 'white',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
+  }
 
   calculateDaysLeft = () => {
     const {calculateDaysLeft} = this.props
@@ -52,17 +62,60 @@ class DaysLeft extends Component {
     return this.props.daysLeft
   }
 
+  startOver = () => {
+    const {startOver} = this.props
+    const returntoHomeScreen = () => this.props.navigation.navigate('WelcomeScreen')
+
+    returnToHomeScreen()
+    startOver()
+  }
+
   render() {
 
     return (
-      <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: 'white'}}>
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>
+      <View style={styles.container}>
+        <Text style={styles.mainText}>
           You have approximately {this.calculateDaysLeft()} days left.
         </Text>
+        <TouchableOpacity
+            style={styles.button}
+            onPress={this.startOver}>
+            <Text style={styles.buttonText}>
+              Start over
+            </Text>
+          </TouchableOpacity>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white'
+  },
+  mainText: {
+    textAlign: 'center',
+    fontSize: 35,
+    fontWeight: 'bold',
+    color: 'black'
+  },
+  button: {
+    padding: 20, 
+    marginLeft: 75, 
+    marginRight: 75,
+    marginTop: 20, 
+    backgroundColor: '#42c2f4',
+    alignItems: 'center'
+  },
+  buttonText: {
+    fontWeight: 'bold', 
+    fontSize: 20,
+    color: 'white'
+  }
+})
 
 const mapStateToProps = state => ({
   age: state.age,
@@ -72,7 +125,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  calculateDaysLeft: value => dispatch(calculateDaysLeft(value))
+  calculateDaysLeft: value => dispatch(calculateDaysLeft(value)),
+  startOver: () => dispatch(startOver())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DaysLeft);

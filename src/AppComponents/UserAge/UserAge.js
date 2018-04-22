@@ -5,7 +5,6 @@ import {
   TextInput, 
   Text, 
   TouchableOpacity, 
-  KeyboardAvoidingView, 
   StyleSheet, 
   Keyboard,
   TouchableWithoutFeedback
@@ -16,6 +15,16 @@ import { connect } from 'react-redux';
 import { setUserAge } from '../../Redux/actions';
 
 class UserAge extends Component {
+  static navigationOptions = {
+      title: 'Number Your Days',
+      headerStyle: {
+        backgroundColor: '#42c2f4',
+      },
+      headerTintColor: 'white',
+      headerTitleStyle: {
+        fontWeight: 'bold'
+      }
+    }
 
   state = {age: ''}
 
@@ -86,7 +95,7 @@ const styles = StyleSheet.create({
     padding: 20, 
     marginLeft: 75, 
     marginRight: 75, 
-    backgroundColor: 'skyblue', 
+    backgroundColor: '#42c2f4', 
     alignItems: 'center'
   },
   buttonText: {

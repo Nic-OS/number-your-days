@@ -11,23 +11,29 @@ export const setUserAge = value => {
     };
   }
   
-  export const setUserGender = value => {
-    return {
-      type: 'SET_GENDER',
-      payload: value,
-    };
-  }
-  
-  export const setUserCountry = value => {
-    return {
-      type: 'SET_COUNTRY',
-      payload: value,
-    };
-  }
-  
-  export const calculateDaysLeft = value => {
-    return {
-      type: 'CALCULATE_DAYSLEFT',
-      payload: value,
-    };
-  }
+export const setUserGender = value => {
+  return {
+    type: 'SET_GENDER',
+    payload: value,
+  };
+}
+
+export const setUserCountry = value => {
+  return {
+    type: 'SET_COUNTRY',
+    payload: value,
+  };
+}
+
+export const calculateDaysLeft = value => {
+  return {
+    type: 'CALCULATE_DAYSLEFT',
+    payload: value,
+  };
+}
+
+export const startOver = () => {
+  return {
+    type: 'START_OVER'
+  };
+}

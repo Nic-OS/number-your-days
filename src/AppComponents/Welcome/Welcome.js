@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import {View, Text, Button, TouchableOpacity, StyleSheet } from 'react-native'
 
 export default class Welcome extends Component {
+  static navigationOptions = {
+    header: null
+  }
 
 render() {
 
@@ -41,7 +44,7 @@ const styles = StyleSheet.create({
     marginLeft: 75, 
     marginRight: 75,
     marginTop: 35,
-    backgroundColor: 'skyblue', 
+    backgroundColor: '#42c2f4', 
     alignItems: 'center'
   },
   buttonText: {
